@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Prime Numbers</title>
+    </head>
+    <body bgcolor="cyan">
+        <h2><U>Find Prime Numbers in a Range</h2></u>
+        <label for="start">Start of the interval: </label>
+        <input type="number" id="start" placeholder="Enter start number"><br><br>
+        <label for="end">End of the interval: </label>
+        <input type="number" id="end" placeholder="Enter end number"><br><br>
+        <button onclick="findPrimes()">Find Prime Numbers</button>
+        
+        <h3>Prime Numbers:</h3>
+        <p id="result"></p>
+
+        <script>
+            function isPrime(num) {
+                if (num <= 1) return false;
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) return false;
+                }
+                return true;
+            }
+
+            function findPrimes() {
+                let start = document.getElementById("start").value;
+                let end = document.getElementById("end").value;
+                start = Number(start);
+                end = Number(end);
+
+                if (isNaN(start) || isNaN(end) || start > end) {
+                    document.getElementById("result").innerText = "Please enter valid interval values.";
+                    return;
+                }
+
+                let primeNumbers = [];
+                for (let i = start; i <= end; i++) {
+                    if (isPrime(i)) {
+                        primeNumbers.push(i);
+                    }
+                }
+
+                let resultText = primeNumbers.length > 0 ?
+                    `Prime numbers between ${start} and ${end}: ${primeNumbers.join(", ")}` :
+                    `No prime numbers found between ${start} and ${end}`;
+
+                document.getElementById("result").innerText = resultText;
+            }
+        </script>
+    </body>
+</html>
