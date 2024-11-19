@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Fibonacci Sequence ff</title>
+<body>
+<h1>Fibonacci Sequence</h1>
+<button onclick="displayFibonacci()">Generate Fibonacci Sequence</button>
+ <p id="result"></p>
+
+<script>
+  function displayFibonacci()
+  {
+   let number=parseInt(prompt("Enter a numbers for the fibonacci sequence:"));
+   if(isNaN(number) || number<=0)
+   {
+   document.getElementById("result").innerText="Please enter a valid positive integer.";
+   return;
+  }
+   let FibonacciSequence=[0,1];
+   for(let i=2;i<=number;i++)
+   {
+  FibonacciSequence.push(FibonacciSequence[i-1]+FibonacciSequence[i-2]);
+  }
+   document.getElementById("result").innerText = `Fibonacci Sequence: ${FibonacciSequence.slice(0, number + 1).join(', ')}`;
+  }
+</script>
+</body>
+</html>
