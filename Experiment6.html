@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>JavaScript String and Math Functions</title>
+    </head>
+    <body>
+        <h1>JS STRING AND MATH FUNCTIONS</h1>
+
+        <script>
+            let a = "Welcome to javascript";
+            let y = "to JavaScript";  // Defining the variable y
+            document.write(`a = ${a}<br/>`);
+            document.write(`Length: ${a.length}<br>`);
+            document.write(`Substring using slice: ${a.slice(11, 21)}<br>`);
+            document.write(`Substring using substr: ${a.substr(11, 4)}<br>`);
+            document.write(`Concatenation: ${a.concat(" ", y)}<br>`);
+            document.write(`Replace: ${a.replace("Javascript", "Html")}<br>`);
+            document.write(`Uppercase: ${a.toUpperCase()}<br>`);
+            document.write(`Lowercase: ${a.toLowerCase()}<br>`);
+            document.write(`Index of 'to': ${a.indexOf("to")}<br>`);
+            document.write(`Last index of 'javascript': ${a.lastIndexOf("javascript")}<br>`);
+            document.write(`Character at position 5: ${a.charAt(5)}<br><br>`);
+
+            var x = 123.4;
+            document.write(`Number = ${x}<br>`);
+            document.write(`Square Root: ${Math.sqrt(x)}<br>`);
+            document.write(`Power to 3: ${Math.pow(x, 3)}<br>`);
+            document.write(`Absolute Value: ${Math.abs(x)}<br>`);
+            document.write(`Round Value: ${Math.round(x)}<br>`);
+            document.write(`Ceil Value: ${Math.ceil(x)}<br>`);
+            document.write(`Floor Value: ${Math.floor(x)}<br>`);
+            document.write(`Pi Value: ${Math.PI}<br>`);
+            document.write(`Max value in (3,4,5): ${Math.max(3, 4, 5)}<br>`);
+            document.write(`Min value in (3,4,5): ${Math.min(3, 4, 5)}<br>`);
+
+        </script>
+    </body>
+</html>
+
