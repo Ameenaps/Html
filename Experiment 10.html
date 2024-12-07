@@ -1,0 +1,147 @@
+<html>
+<head>
+    <title>Online Exam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .timer {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body bgcolor="skyblue">
+    <h1>Online Exam</h1>
+    <div class="timer" id="timer">Time Left: 10:00</div>
+    <form id="examForm">
+        <div class="question">
+            <p>1. What is the capital of India?</p>
+            <input type="radio" name="q1" value="Paris" id="q1a"> Paris<br>
+            <input type="radio" name="q1" value="Delhi" id="q1b"> Delhi<br>
+            <input type="radio" name="q1" value="Berlin" id="q1c"> Berlin<br>
+        </div>
+        <div class="question">
+            <p>2. What is the value for 30 + 10?</p>
+            <input type="radio" name="q2" value="30" id="q2a"> 30<br>
+            <input type="radio" name="q2" value="40" id="q2b"> 40<br>
+            <input type="radio" name="q2" value="50" id="q2c"> 50<br>
+       </div>
+        <div class="question">
+            <p>3. Who wrote 'Hamlet'?</p>
+            <input type="radio" name="q3" value="Shakespeare" id="q3a"> Shakespeare<br>
+            <input type="radio" name="q3" value="Dickens" id="q3b"> Dickens<br>
+            <input type="radio" name="q3" value="Hemingway" id="q3c"> Hemingway<br>
+        </div>
+        <div class="question">
+             <P>4. Who is the Father of Computers?</p>
+             <input type="radio" name="q4" value="Charles Babbage" id="q4a"> Charles Babbage<br>
+             <input type="radio" name="q4" value="Alan Turing" id="q4b"> Alan Turing<br>
+             <input type="radio" name="q4" value="Bill Gates" id="q4c"> Bill Gates<br>
+             </div>
+         <div class="question">
+              <p>5. Which planet is known as the Red Planet?</p>
+              <input type="radio" name="q5" value="Venus" id="q5a"> Venus<br>
+              <input type="radio" name="q5" value="Mars" id="q5b"> Mars<br>
+              <input type="radio" name="q5" value="Earth" id="q5c"> Earth<br>
+              </div>
+         <div class="question">
+              <P>6. What is the national animal of India?</p>
+              <input type="radio" name="q6" value="Elephant" id="q6a"> Elephant<br>
+              <input type="radio" name="q6" value="Lion" id="q6b"> Lion<br>
+              <input type="radio" name="q6" value="Tiger" id="q6c">Tiger<br>
+              </div>
+         <div class="question">
+              <P>7. What is the boiling point of water at sea level?</p>
+              <input type="radio" name="q7" value="150degree C" id="q7a">150degree C<br>
+              <input type="radio" name="q7" value="100degree C" id="q7b">100degree C<br>
+              <input type="radio" name="q7" value="200degree C" id="q7c">200degree C<br>
+              </div>
+         <div class="question">
+              <p>8. What is the largest ocean on Earth?</p>
+              <input type="radio" name="q8" value="Atlantic Ocean" id="q8a"> Atlantic Ocean<br>
+              <input type="radio" name="q8" value="Pacific Ocean" id="q8b"> Pacific Ocean<br>
+              <input type="radio" name="q8" value="Indian Ocean" id="q8c"> Indian Ocean<br>
+              </div>
+         <div class="question">
+              <p>9. Which element has the chemical symbol'O'?</p>
+              <input type="radio" name="q9" value="Oxygen" id="q9a"> Oxygen<br>
+              <input type="radio" name="q9" value="Ozone" id="q9b"> Ozone<br>
+              <input type="radio" name="q9" value="Osmium" id="q3c"> Osmium<br>
+              </div>
+          <div class="question">
+               <p>10. In which year did World War 2 end?</p>
+               <input type="radio" name="q10" value="1942" id="q10a"> 1942<br>
+               <input type="radio" name="q10" value="1945" id="q10b"> 1945<br>
+               <input type="radio" name="q10" value="1947" id="q10c"> 1947<br>
+               </div>
+                             
+        <center><button type="button" class="btn" onclick="submitExam()">Submit</button></center>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        let timer = 600;
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            const minutes = Math.floor(timer / 60);
+            const seconds = timer % 60;
+            timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timer > 0) {
+                timer--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                alert("Time is up!");
+                submitExam();
+            }
+        }
+        updateTimer();
+
+        function submitExam() {
+            const form = document.getElementById('examForm');
+            const resultElement = document.getElementById('result');
+            const answers = {
+                q1: "Delhi",
+                q2: "40",
+                q3: "Shakespeare",
+                q4: "Charles Babbage",
+                q5: "Mars",
+                q6: "Tiger",
+                q7: "100degree C",
+                q8: "Pacific Ocean",
+                q9: "Oxygen",
+                q10: "1945"
+            };
+
+            let score = 0;
+            let total = Object.keys(answers).length;
+
+            for (let key in answers) {
+                const answer = form.elements[key];
+                const selected = [...answer].find(input => input.checked);
+                if (selected && selected.value === answers[key]) {
+                    score++;
+                }
+            }
+
+            resultElement.textContent = `You scored ${score} out of ${total}`;
+            resultElement.style.fontSize = "18px";
+            resultElement.style.fontWeight = "bold";
+            form.style.display = "none";
+        }
+    </script>
+</body>
+</html>
+
